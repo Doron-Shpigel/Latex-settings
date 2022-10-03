@@ -5,3 +5,11 @@ shortdesc My Main packages the I'm using
 relocated 1
 runfiles size=1
 RELOC/tex/latex/latex-settings/settings.sty
+
+name mypython
+category Package
+revision 1
+shortdesc My Main packages the I'm using
+relocated 1
+runfiles size=1
+RELOC/tex/latex/latex-settings/mypython.sty
