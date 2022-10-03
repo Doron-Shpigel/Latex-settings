@@ -1,0 +1,55 @@
+\ProvidesPackage{mypython}
+\usepackage{sympytex}
+%commands Math python
+\begin{sympysilent}
+from sympy import Function, dsolve, Eq, Derivative, sin, cos, log, symbols, sympify, pprint, integrate, Add, exp, latex
+from sympy.abc import x, y, u 
+from sympy.solvers.ode.systems import dsolve_system
+from sympy.parsing.latex import parse_latex
+t = symbols("t")
+s = symbols("s")
+
+def fix_logs(expr):
+    #print("the function recive:")
+    #pprint(expr)
+    replacements = {}
+    for a in expr.atoms(log):
+        if a.args[0].as_coeff_add()[0].is_negative:
+            replacements[a] = log(-a.args[0]) + log(-1)
+    return expr.xreplace(replacements)
+
+
+def set_funcs(a, b, c):
+    global func_a, func_b, func_c
+    x, y, u =symbols("x y u", cls=Function)
+    func_a = Eq(x(t).diff(t), sympify(a))
+    func_b = Eq(y(t).diff(t), sympify(b))
+    func_c = Eq(u(t).diff(t), sympify(c))
+    ode_eqs = [func_a, func_b, func_c]
+    return ode_eqs
+
+def gen_sol(ode_eqs):
+    sol = dsolve_system(ode_eqs, doit=True)
+    temp_eqs=sol[0]
+    #pprint(temp_eqs)
+    sol_eqs=[0,0,0]
+    sol_eqs[0] = Eq(temp_eqs[0].lhs, fix_logs(temp_eqs[0].rhs))
+    sol_eqs[1] = Eq(temp_eqs[1].lhs, fix_logs(temp_eqs[1].rhs))
+    sol_eqs[2] = Eq(temp_eqs[2].lhs, fix_logs(temp_eqs[2].rhs))
+    #sol_eqs[0].rhs=fix_logs(sol_eqs[0].rhs)
+    #sol_eqs[1].rhs=fix_logs(sol_eqs[1].rhs)
+    #sol_eqs[2].rhs=fix_logs(sol_eqs[2].rhs)
+    return sol_eqs
+    
+def m_fix_logs(eqs, flag):
+    if flag == True:    
+        expr=eqs.rhs
+        replacements = {}    
+        for a in expr.atoms(log):
+            replacements[a] = log(-a.args[0])
+        expr = expr.xreplace(replacements)
+        return Eq(eqs.lhs, expr)
+    else:
+        return eqs
+
+\end{sympysilent}
