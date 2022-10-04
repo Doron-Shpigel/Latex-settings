@@ -4,13 +4,16 @@
 %structure:
 \usepackage{float}
 \usepackage{environ}
+\usepackage{graphicx}
 
 %math packages:
 \usepackage{amsmath,esint}
 \usepackage{mathtools}
 \usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{commath}
 \usepackage{cancel}
+
 
 
 %language setting 
@@ -27,9 +30,12 @@
 
 %commands Math
 \newcommand{\texteq}[2][=]{\stackrel{#2}{#1}}
-\newcommand{\comp}[1]{{#1}^{\complement}}
+\newcommand{\comp}[1]{{#1}^\complement}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\X}{\mathcal{X}}
+\newcommand{\Scale}[2][4]{\scalebox{#1}{\ensuremath{#2}}}
+\renewcommand{\P}[1]{\Scale[1.1]{\mathrm{P}}\left( {#1} \right)}
+
 
 
 
