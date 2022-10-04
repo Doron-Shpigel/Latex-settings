@@ -11,6 +11,7 @@
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{commath}
 \usepackage{cancel}
 
@@ -27,7 +28,11 @@
 \usepackage{bidi}
 
 
-
+%Math environments
+\theoremstyle{defn}
+\theoremstyle{thm}
+\newtheorem{thm}{משפט}[section]
+\newtheorem{defn}[thm]{הגדרה}
 %commands Math
 \newcommand{\texteq}[2][=]{\stackrel{#2}{#1}}
 \newcommand{\comp}[1]{{#1}^\complement}
