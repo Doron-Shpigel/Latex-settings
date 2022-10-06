@@ -33,6 +33,24 @@
 \setsansfont{Simple CLM}
 \usepackage{bidi}
 
+%general environmetns
+\newenvironment{colorparagraph}[2][red]
+    {%here comes what is processed before
+    \color{#1}\noindent\textbf{#2}\hspace{1em}\newline}%\ignorespaces}
+    {%and here what is processed after
+    \par}
+
+\newcommand{\frameparagraph}[3][black]{
+    \begin{center}
+        \noindent\fcolorbox{#1}{white}{\parbox{0.9\textwidth}%here comes what is processed before
+        {\textbf{#2}\newline%title
+        #3
+        }
+        \par
+        }
+    \end{center}
+}
+\renewcommand\labelitemi{$\vcenter{\hbox{$\bullet$}}$}
 
 %Math environments
 \theoremstyle{plain}
