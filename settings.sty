@@ -10,6 +10,7 @@
 \definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
 \usepackage{tikz}
 \usepackage{showkeys}
+\usepackage{enumitem}
 
 %math packages:
 \usepackage{amsmath,esint}
@@ -35,7 +36,7 @@
 
 %Math environments
 \theoremstyle{plain}
-\newtheorem{thm}{משפט}[section]
+\newtheorem{theorem}{משפט}[section]
 %\theoremstyle{definition}
 \newtheoremstyle{styledef}%
 {9pt}% Space above
@@ -47,7 +48,7 @@
 { }% Space after theorem head
 {}% Theorem head spec (can be left empty, meaning ‘normal’)
 \theoremstyle{styledef}
-\newtheorem{defn}[thm]{הגדרה}
+\newtheorem{defn}[theorem]{הגדרה}
 \newcommand{\statedefsolid}[2][\textwidth]{
     \par\noindent\tikzstyle{mybox} = [fill=yellow!20,thick,rectangle,inner sep=6pt,path picture={\fill [green!50!black] ([xshift=-6.15cm]path picture bounding box.north) rectangle (path picture bounding box.south west);}]
     \begin{tikzpicture}
@@ -87,7 +88,7 @@
 \newcommand{\Scale}[2][4]{\scalebox{#1}{\ensuremath{#2}}}
 \renewcommand{\P}[1]{\Scale[1.1]{\mathrm{P}}\expandafter\ifx\expandafter\relax
 \detokenize{#1}\relax\else{\left(#1\right)}\fi}
-
+\newcommand{\limit}{\lim \limits_ }  
 
 
 
