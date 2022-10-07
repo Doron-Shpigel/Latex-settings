@@ -2,15 +2,17 @@
 
 
 %structure:
+\usepackage{import}
 \usepackage{float}
 \usepackage{environ}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \definecolor{amber}{rgb}{1.0, 0.49, 0.0}
 \definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
-\usepackage{tikz}
 \usepackage{showkeys}
 \usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{wrapfig}
 
 %math packages:
 \usepackage{amsmath,esint}
@@ -20,6 +22,7 @@
 \usepackage{amsthm}
 \usepackage{commath}
 \usepackage{cancel}
+\usepackage{dirtytalk}
 
 
 
@@ -35,10 +38,10 @@
 
 %general environmetns
 \newenvironment{colorparagraph}[2][red]
-    {%here comes what is processed before
-    \color{#1}\noindent\textbf{#2}\hspace{1em}\newline}%\ignorespaces}
-    {%and here what is processed after
-    \par}
+{%here comes what is processed before
+\color{#1}\noindent\textbf{#2}\hspace{1em}\newline}%\ignorespaces}
+{%and here what is processed after
+\par}
 
 \newcommand{\frameparagraph}[3][black]{
     \begin{center}
@@ -49,8 +52,20 @@
         \par
         }
     \end{center}
-}
-\renewcommand\labelitemi{$\vcenter{\hbox{$\bullet$}}$}
+    }
+    \renewcommand\labelitemi{$\vcenter{\hbox{$\bullet$}}$}
+
+\newcommand{\qq}[1]{\say{\textit{#1}}}
+
+\newcommand{\warpfig}[2]{\vspace*{-\baselineskip}
+    \begin{minipage}{\textwidth}
+    \begin{wrapfigure}{l}{0.4\textwidth}
+        \includegraphics[width=0.4\textwidth]{#1}
+    \end{wrapfigure}\hphantom{1pt}\newline
+    #2
+    \hphantom{100pt}\newline
+    \end{minipage}}
+
 
 %Math environments
 \theoremstyle{plain}
@@ -72,32 +87,30 @@
     \begin{tikzpicture}
         \node [mybox] (box)
         {%
-            \begin{minipage}{#1}{\selectlanguage{hebrew}#2}\end{minipage}
+        \begin{minipage}{#1}{\selectlanguage{hebrew}#2}\end{minipage}
         };
     \end{tikzpicture}
 }
 \newcommand{\statetheoremsolid}[2][\textwidth]{
-    \par\noindent\tikzstyle{mybox} = [draw=amber,fill=gray!17,thick,rectangle,rounded corners,inner sep=6pt]
-    \begin{tikzpicture}
-    \node [mybox] (box){%
-    \begin{minipage}{#1}{\selectlanguage{hebrew}#2}\end{minipage}
-    };
-    \end{tikzpicture}
+        \par\noindent\tikzstyle{mybox} = [draw=amber,fill=gray!17,thick,rectangle,rounded corners,inner sep=6pt]
+        \begin{tikzpicture}
+            \node [mybox] (box){%
+            \begin{minipage}{#1}{\selectlanguage{hebrew}#2}\end{minipage}
+            };
+        \end{tikzpicture}
 }
-
+        
 \newcommand{\newdef}[2]{
-\hrule
-\statedefsolid{
-\begin{defn}
-    \label{#1}
-    \textcolor{cadmiumgreen}{\large{#1}}\newline
-    #2
-\end{defn}
+            \hrule
+            \statedefsolid{
+                \begin{defn}
+                    \label{#1}
+                    \textcolor{cadmiumgreen}{\large{#1}}\newline
+                    #2
+                \end{defn}
+                }
+                \hrule
 }
-\hrule
-}
-
-
 %commands Math
 \newcommand{\texteq}[2][=]{\stackrel{#2}{#1}}
 \newcommand{\comp}[1]{{#1}^\complement}
@@ -109,4 +122,7 @@
 \newcommand{\limit}{\lim \limits_ }  
 
 
+
+
+%tikz
 
