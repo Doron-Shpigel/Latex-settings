@@ -14,6 +14,7 @@
 \usepackage{tikz}
 \usepackage{wrapfig}
 
+
 %math packages:
 \usepackage{amsmath,esint}
 \usepackage{mathtools}
@@ -120,9 +121,16 @@
 \renewcommand{\P}[1]{\Scale[1.1]{\mathrm{P}}\expandafter\ifx\expandafter\relax
 \detokenize{#1}\relax\else{\left(#1\right)}\fi}
 \newcommand{\limit}{\lim \limits_ }  
-
+\newcommand\mtiny[1]{\mbox{\tiny\ensuremath{#1}}}
 
 
 
 %tikz
-
+%\begin{tikzpicture}[scale=1]
+%    \draw[step=0.25cm] (0,0) grid +(10,10);
+%    \foreach \a in {1,...,10}{
+%        \foreach \b in {1,...,10}{
+%            \ifthenelse{\a > \b \OR \a = \b}{\fill (\a, \b) circle (2pt);}{}
+%        }
+%    }
+%\end{tikzpicture}
