@@ -13,6 +13,8 @@
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{wrapfig}
+\usepackage{hyperref}
+
 
 
 %math packages:
@@ -67,6 +69,7 @@
     \hphantom{100pt}\newline
     \end{minipage}}
 
+\renewcommand*\showkeyslabelformat[1]{\fbox{\normalfont\small\ttfamily\texthebrew{#1}}}
 
 %Math environments
 \theoremstyle{plain}
@@ -122,6 +125,7 @@
 \detokenize{#1}\relax\else{\left(#1\right)}\fi}
 \newcommand{\limit}{\lim \limits_ }  
 \newcommand\mtiny[1]{\mbox{\tiny\ensuremath{#1}}}
+%\newcommand{\inlinenum}{\stepcounter{equation}\ \left(\theequation\right)}
 
 
 
