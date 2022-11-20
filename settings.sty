@@ -45,6 +45,14 @@
 \color{#1}\noindent\textbf{#2}\hspace{1em}\newline}%\ignorespaces}
 {%and here what is processed after
 \par}
+\newcounter{QuestionCounter}
+\newenvironment{Question}[2][]{
+    \refstepcounter{QuestionCounter}
+    \medskip
+    שאלה \theQuestionCounter.%
+    \newline\noindent%
+    #2
+}
 
 \newcommand{\frameparagraph}[3][black]{
     \begin{center}
