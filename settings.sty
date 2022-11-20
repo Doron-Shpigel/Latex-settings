@@ -46,13 +46,10 @@
 {%and here what is processed after
 \par}
 \newcounter{QuestionCounter}
-\newenvironment{Question}[2][]{
-    \refstepcounter{QuestionCounter}
-    \medskip
+\newenvironment{Question}{
+    \refstepcounter{QuestionCounter}%
     \noindent שאלה \theQuestionCounter.%
-    \newline
-    \indent%
-    #2
+    \newline\indent
 }
 
 \newcommand{\frameparagraph}[3][black]{
