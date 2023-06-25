@@ -1,0 +1,23 @@
+\ProvidesPackage{controltikz}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+
+\tikzset{
+block/.style={
+  draw, 
+  fill=blue!20, 
+  rectangle, 
+  minimum height=3em, 
+  minimum width=6em
+  },
+sum/.style={
+  draw, 
+  fill=blue!20, 
+  circle, 
+  },
+input/.style={coordinate},
+output/.style={coordinate},
+pinstyle/.style={
+  pin edge={to-,thin,black}
+  }
+}

@@ -1,7 +1,8 @@
 \ProvidesPackage{settings}
 
-
+%\frac{k}{\alpha x + k + s^{2}}
 %structure:
+\usepackage{wrapfig}
 \usepackage{import}
 \usepackage{float}
 \usepackage{environ}
@@ -15,7 +16,8 @@
 \usepackage{wrapfig}
 \usepackage{hyperref}
 \usepackage{subcaption}
-\usepackage{minted}
+\usepackage{pythontex}
+% \usepackage{minted}
 
 
 
@@ -48,10 +50,18 @@
 {%and here what is processed after
 \par}
 \newcounter{QuestionCounter}
-\newenvironment{Question}{
+\newenvironment{Question}[1][]{
     \refstepcounter{QuestionCounter}%
-    \noindent שאלה \theQuestionCounter.%
-    \newline\indent
+    \setcounter{SubQuestionCounter}{0}
+    \noindent \bfseries שאלה \theQuestionCounter.\indent#1%
+    \normalfont\par
+    }
+    
+\newcounter{SubQuestionCounter}
+\newenvironment{SubQuestion}[1][]{
+    \refstepcounter{SubQuestionCounter}%
+    \noindent\bfseries\arabic{QuestionCounter}.\arabic{SubQuestionCounter}.\indent#1%
+    \normalfont\par
 }
 
 \newcommand{\frameparagraph}[3][black]{
@@ -64,7 +74,7 @@
         }
     \end{center}
     }
-    \renewcommand\labelitemi{$\vcenter{\hbox{$\bullet$}}$}
+\renewcommand\labelitemi{$\vcenter{\hbox{$\bullet$}}$}
 
 \newcommand{\qq}[1]{\say{\textit{#1}}}
 
@@ -143,10 +153,25 @@
 %\newcommand{\inlinenum}{\stepcounter{equation}\ \left(\theequation\right)}
 \newcommand{\Abs}[1]{\left\lVert #1 \right\rVert}
 \newcommand{\Vector}[1]{\left\langle #1 \right\rangle }
+\newcommand{\var}[1]{\text{Var}\left(#1\right)}
+\newcommand{\geo}[1]{\text{Geo}\left(#1\right)}
+\newcommand{\Exp}[1]{\text{Exp}\left(#1\right)}
+\newcommand{\cov}[1]{\text{Cov}\left(#1\right)}
+\newcommand{\cor}[1]{\text{Cor}\left(#1\right)}
+\newcommand{\bin}[1]{\text{Bin}\left(#1\right)}
+\newcommand{\E}[1]{\text{E}\left(#1\right)}
+\newcommand{\gam}[1]{\text{Gamma}\left(#1\right)}
+\newcommand{\lamda}{\lambda}
+\newcommand{\Lamda}{\Lambda}
+\newcommand{\iintLimitUnder}[3]{\\iint \\limits_{#1}^{#2}{#3}}
+
+
 
 
 %tikz
 \usepackage{blox}
+\usepackage{pgfplots}
+
 %\begin{tikzpicture}[scale=1]
 %    \draw[step=0.25cm] (0,0) grid +(10,10);
 %    \foreach \a in {1,...,10}{
