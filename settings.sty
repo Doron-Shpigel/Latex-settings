@@ -6,6 +6,7 @@
 \usepackage{import}
 \usepackage{float}
 \usepackage{environ}
+\usepackage{changepage}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \definecolor{amber}{rgb}{1.0, 0.49, 0.0}
@@ -58,11 +59,12 @@
     }
     
 \newcounter{SubQuestionCounter}
-\newenvironment{SubQuestion}[1][]{
-    \refstepcounter{SubQuestionCounter}%
-    \noindent\bfseries\arabic{QuestionCounter}.\arabic{SubQuestionCounter}.\indent#1%
-    \normalfont\par
-}
+\setcounter{SubQuestionCounter}{0}
+\newenvironment{SubQuestion}[1][\theSubQuestionCounter]{
+    \refstepcounter{SubQuestionCounter}
+    \indent\bfseries\theQuestionCounter.\hphantom{}#1.\begin{adjustwidth}{2.5em}{2.5em}
+    \unskip\ignorespaces\ignorespacesafterend\normalfont
+}{\end{adjustwidth}\hfill\break}
 
 \newcommand{\frameparagraph}[3][black]{
     \begin{center}
