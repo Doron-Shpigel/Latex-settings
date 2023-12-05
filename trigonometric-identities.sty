@@ -1,0 +1,170 @@
+\ProvidesPackage{trigonometric-identities}
+% Packages
+% ---------------------
+
+\usepackage{amsmath} % Needed for command eqref
+\usepackage{siunitx} % Physical numbers and units
+\usepackage{bm} % Bold math text \bm{X}
+\usepackage{tabu} % Tables with vertical cell padding adjustment
+\usepackage{hyperref} % URLs
+\usepackage{xstring}
+
+% Commands
+% ---------------------
+
+\newcommand{\trigAngles}
+{
+    \begin{table}[!ht]
+        \setlength{\tabcolsep}{1em} % Increase the horizontal table cell margin
+        \centering
+          \tabulinesep=1.5mm
+          \begin{tabu}{|c|c|c|c|c|c|c|c|}
+            \hline
+            \textbf{Degrees}
+              & $\SI{0}{\degree}$
+              & $\SI{30}{\degree}$
+              & $\SI{45}{\degree}$
+              & $\SI{60}{\degree}$
+              & $\SI{90}{\degree}$\\
+            \hline
+            \textbf{Radians}
+              & $\displaystyle 0$
+              & $\displaystyle \frac{\pi}{6}$
+              & $\displaystyle \frac{\pi}{4}$
+              & $\displaystyle \frac{\pi}{3}$
+              & $\displaystyle \frac{\pi}{2}$\\
+            \hline
+            \textbf{\bm{$\sin \theta$}}
+              & $\displaystyle 0$
+              & $\displaystyle \frac{1}{2}$
+              & $\displaystyle \frac{\sqrt 2}{2}$
+              & $\displaystyle \frac{\sqrt 3}{2}$
+              & $\displaystyle 1$\\
+            \hline
+            \textbf{\bm{$\cos \theta$}}
+              & $\displaystyle 1$
+              & $\displaystyle \frac{\sqrt 3}{2}$
+              & $\displaystyle \frac{\sqrt 2}{2}$
+              & $\displaystyle \frac{1}{2}$
+              & $\displaystyle 0$\\
+            \hline
+            \textbf{\bm{$\tan \theta$}}
+              & $\displaystyle 0$
+              & $\displaystyle \frac{\sqrt 3}{3}$
+              & $\displaystyle 1$
+              & $\displaystyle \sqrt 3$
+              &\\
+            \hline
+          \end{tabu}
+        \end{table}
+}
+\newcommand{\trigCofunction}[1][0]
+{
+  \IfEqCase{#1}{
+    {0}{\begin{align*}
+    1.\,\sin(\frac{\pi}{2} \pm X) &= \cos X\\
+    2.\,\cos(\frac{\pi}{2} \pm X) &= \mp\sin X\\
+    3.\,\tan(\frac{\pi}{2} \pm X) &= \mp\cot X\\
+    4.\,\cot(\frac{\pi}{2} \pm X) &= \mp\tan X
+  \end{align*}}
+    {1}{$\sin(\frac{\pi}{2} \pm X)= \cos X$}
+    {2}{$\cos(\frac{\pi}{2} \pm X)= \mp\sin X$}
+    {3}{$\tan(\frac{\pi}{2} \pm X)= \mp\cot X$}
+    {4}{$\cot(\frac{\pi}{2} \pm X)= \mp\tan X$}
+  }[\PackageError{trigCofunction}{Undefined option}{}]
+}
+\newcommand{\trigDoubleAngles}[1][0]
+{
+  \IfEqCase{#1}{
+  {0}{\begin{align*}
+    1.\,\sin(2x)  &= 2 \sin X \cos X\\
+    2.\,\cos(2x)  &= \cos^2 X - \sin^2 X\\
+              &= 2 \cos^2 X - 1\\
+              &= 1 - 2 \sin^2 X\\
+    3.\,\tan(2x)  &= \frac{2 \tan X}{1 - \tan^2 X}
+  \end{align*}}
+  {1}{$\sin(2x) = 2 \sin X \cos X$}
+  {2}{\begin{align*}\cos(2x)  &= \cos^2 X - \sin^2 X\\
+    &= 2 \cos^2 X - 1\\
+    &= 1 - 2 \sin^2 X\\
+  \end{align*}}
+  {3}{$\tan(2x) = \frac{2 \tan X}{1 - \tan^2 X}$}
+  }[\PackageError{trigDoubleAngles}{Undefined option}{}]
+}
+\newcommand{\trigEvenOdd}[1][0]
+{
+  \IfEqCase{#1}{
+  {0}{\begin{align*}
+    1.\,\sin(-X)  &= - \sin X\\
+    2.\,\cos(-X)  &= \cos X\\
+    3.\,\tan(-X)  &= -\tan X
+  \end{align*}}
+  {1}{$\sin(-X) = - \sin X$}
+  {2}{$\cos(-X) = \cos X$}
+  {3}{$\tan(-X) = -\tan X$}
+
+  }[\PackageError{trigEvenOdd}{Undefined option}{}]
+}
+\newcommand{\trigHalfAngles}[1][0]
+{
+  \IfEqCase{#1}{
+  {0}{\begin{align*}
+    1.\,\sin \frac{X}{2}  &= \pm \sqrt{ \frac{1 - \cos X }{2} }\\
+    2.\,\cos \frac{X}{2}  &= \pm \sqrt{ \frac{1 + \cos X }{2} }\\
+    3.\,\tan \frac{X}{2}  &= \frac{1 - \cos X }{\sin X}\\
+                      &= \frac{ \sin X }{ 1 + \cos X }
+  \end{align*}}
+  {1}{$\sin \frac{X}{2} = \pm \sqrt{ \frac{1 - \cos X }{2} }$}
+  {2}{$\cos \frac{X}{2} = \pm \sqrt{ \frac{1 + \cos X }{2} }$}
+  {3}{$\tan \frac{X}{2} = \frac{1 - \cos X }{\sin X} = \frac{ \sin X }{ 1 + \cos X }$}
+  }[\PackageError{trigHalfAngles}{Undefined option}{}]
+}
+\newcommand{\trigPower}[1][0]
+{
+  \IfEqCase{#1}{
+    {0}{\begin{align*}
+      1.\,\sin^2 X  &= \frac{1 - \cos 2x}{2}\\
+      2.\,\cos^2 X  &= \frac{1 + \cos 2x}{2}\\
+      3.\,\tan^2 X  &= \frac{1 - \cos 2x}{1 + \cos 2x}
+    \end{align*}}
+    {1}{$\sin^2 X = \frac{1 - \cos 2x}{2}$}
+    {2}{$\cos^2 X = \frac{1 + \cos 2x}{2}$}
+    {3}{$\tan^2 X = \frac{1 - \cos 2x}{1 + \cos 2x}$}
+  }[\PackageError{trigSumAngles}{Undefined option}{}]
+}
+\newcommand{\trigProductToSum}[1][0]
+{
+  \IfEqCase{#1}{
+    {0}{\begin{align*}
+      1.\,\sin X \sin Y &= \frac{1}{2}\big[\cos(X - Y) - \cos(X + Y)\big]\\
+      2.\,\cos X \cos Y &= \frac{1}{2}\big[\cos(X - Y) + \cos(X + Y)\big]\\
+      3.\,\sin X \cos Y &= \frac{1}{2}\big[\sin(X + Y) + \sin(X - Y)\big]\\
+      4.\,\tan X \tan Y &= \frac{ \tan X + \tan Y }{ \cot X + \cot Y }\\
+      5.\,\tan X \cot Y &= \frac{ \tan X + \cot Y }{ \cot X + \tan Y }
+    \end{align*}}
+    {1}{$\sin X \sin Y = \frac{1}{2}\big[\cos(X - Y) - \cos(X + Y)\big]$}
+    {2}{$\cos X \cos Y = \frac{1}{2}\big[\cos(X - Y) + \cos(X + Y)\big]$}
+    {3}{$\sin X \cos Y = \frac{1}{2}\big[\sin(X + Y) + \sin(X - Y)\big]$}
+    {4}{$\tan X \tan Y = \frac{ \tan X + \tan Y }{ \cot X + \cot Y }$}
+    {5}{$\tan X \cot Y = \frac{ \tan X + \cot Y }{ \cot X + \tan Y }$}
+  }[\PackageError{trigSumAngles}{Undefined option}{}]
+}
+\newcommand{\trigSumToProduct}[1][0]
+{
+  \IfEqCase{#1}{
+    {0}{\begin{align*}
+    1.\,\sin X + \sin Y &= 2 \sin \Big( \frac{X + Y}{2} \Big) \cos \Big( \frac{X - Y}{2} \Big)\\
+    2.\,\sin X - \sin Y &= 2 \cos \Big( \frac{X + Y}{2} \Big) \sin \Big( \frac{X - Y}{2} \Big)\\
+    3.\,\cos X + \cos Y &= 2 \cos \Big( \frac{X + Y}{2} \Big) \cos \Big( \frac{X - Y}{2} \Big)\\
+    4.\,\cos X - \cos Y &= -2 \sin \Big( \frac{X + Y}{2} \Big) \sin \Big( \frac{X - Y}{2} \Big)\\
+    5.\,\tan X + \tan Y &= \frac{ \sin(X + Y) }{ \cos X \cos Y}\\
+    6.\,\tan X - \tan Y &= \frac{ \sin(X - Y) }{ \cos X \cos Y}\\
+  \end{align*}}
+    {1}{$\sin X + \sin Y = 2 \sin \Big( \frac{X + Y}{2} \Big) \cos \Big( \frac{X - Y}{2} \Big)$}
+    {2}{$\sin X - \sin Y = 2 \cos \Big( \frac{X + Y}{2} \Big) \sin \Big( \frac{X - Y}{2} \Big)$}
+    {3}{$\cos X + \cos Y = 2 \cos \Big( \frac{X + Y}{2} \Big) \cos \Big( \frac{X - Y}{2} \Big)$}
+    {4}{$\cos X - \cos Y = -2 \sin \Big( \frac{X + Y}{2} \Big) \sin \Big( \frac{X - Y}{2} \Big)$}
+    {5}{$\tan X + \tan Y = \frac{ \sin(X + Y) }{ \cos X \cos Y}$}
+    {6}{$\tan X - \tan Y = \frac{ \sin(X - Y) }{ \cos X \cos Y}$}
+  }[\PackageError{trigSumAngles}{Undefined option}{}]
+}
