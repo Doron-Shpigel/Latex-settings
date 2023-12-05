@@ -45,6 +45,9 @@
 \usepackage{bidi}
 
 %general environmetns
+\let\theversion=\relax
+\newcommand{\version}[1]{\\\textenglish{Version #1}}
+
 \newenvironment{colorparagraph}[2][red]
 {%here comes what is processed before
 \color{#1}\noindent\textbf{#2}\hspace{1em}\newline}%\ignorespaces}
