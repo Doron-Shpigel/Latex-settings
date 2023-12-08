@@ -80,17 +80,16 @@
 {
     \label{פתרון: \theAnswerCounter}
     \noindent \bfseries פתרון \theAnswerCounter.\indent#1%
-    \normalfont\par
-}{\refstepcounter{AnswerCounter}$\blacksquare$\newline}
+    \normalfont\par\setcounter{SubAnswerCounter}{0}
+}{\refstepcounter{AnswerCounter}\hfill$\blacksquare$\break}
 
 \newcounter{SubAnswerCounter}
 \setcounter{SubAnswerCounter}{0}
-
 \newenvironment{SubAnswer}[1][\theSubAnswerCounter]{
     \refstepcounter{SubAnswerCounter}
     \indent\bfseries\theAnswerCounter.\hphantom{}#1.\begin{adjustwidth}{2.5em}{2.5em}
     \unskip\ignorespaces\ignorespacesafterend\normalfont
-}{\end{adjustwidth}$\Box$\hfill\break}
+}{\end{adjustwidth}\hfill$\Box$\break}
 
 \newcommand{\setQnA}
 {
