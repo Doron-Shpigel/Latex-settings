@@ -63,7 +63,7 @@
     \setcounter{SubQuestionCounter}{0}
     \noindent \bfseries שאלה \theQuestionCounter.\indent#1%
     \normalfont\par
-}{\refstepcounter{QuestionCounter}}
+}{\refstepcounter{QuestionCounter}\hfill\break\hphantom{}}
     
 \newcounter{SubQuestionCounter}
 \setcounter{SubQuestionCounter}{0}
@@ -77,11 +77,11 @@
 \addtocounter{AnswerCounter}{1}
 
 \newenvironment{Answer}[1][]
-{
-    \label{פתרון: \theAnswerCounter}
-    \noindent \bfseries פתרון \theAnswerCounter.\indent#1%
-    \normalfont\par\setcounter{SubAnswerCounter}{0}
-}{\refstepcounter{AnswerCounter}\hfill$\blacksquare$\break}
+{   \label{פתרון: \theAnswerCounter}%
+    \setcounter{SubAnswerCounter}{0}
+    \noindent\bfseries פתרון \theAnswerCounter.\indent#1%
+    \normalfont\hfill \break%
+}{\refstepcounter{AnswerCounter}\hfill$\blacksquare$\break\hphantom{}}
 
 \newcounter{SubAnswerCounter}
 \setcounter{SubAnswerCounter}{0}
@@ -96,7 +96,6 @@
     \addtocounter{QuestionCounter}{-1}
     \setcounter{AnswerCounter}{\theQuestionCounter}
     \refstepcounter{QuestionCounter}
-
 }
 
 \newcommand{\frameparagraph}[3][black]{
