@@ -32,6 +32,7 @@
 \usepackage{commath}
 \usepackage{cancel}
 \usepackage{dirtytalk}
+\usepackage{mathspec}
 
 
 
@@ -63,33 +64,32 @@
     \setcounter{SubQuestionCounter}{0}
     \noindent \bfseries שאלה \theQuestionCounter.\indent#1%
     \normalfont\par
-}{\refstepcounter{QuestionCounter}\hfill\break\hphantom{}}
-    
+    }{\refstepcounter{QuestionCounter}\hfill\break\hphantom{}}
+
 \newcounter{SubQuestionCounter}
 \setcounter{SubQuestionCounter}{0}
 \newenvironment{SubQuestion}[1][\theSubQuestionCounter]{
-    \refstepcounter{SubQuestionCounter}
-    \indent\bfseries\theQuestionCounter.\hphantom{}#1.\begin{adjustwidth}{2.5em}{2.5em}
-    \unskip\ignorespaces\ignorespacesafterend\normalfont
-}{\end{adjustwidth}\hfill\break}
+        \refstepcounter{SubQuestionCounter}
+        \indent\bfseries\theQuestionCounter.\hphantom{}#1.\begin{adjustwidth}{2.5em}{2.5em}
+        \unskip\ignorespaces\ignorespacesafterend\normalfont
+        }{\end{adjustwidth}\hfill\break}
 
 \newcounter{AnswerCounter}
 \addtocounter{AnswerCounter}{1}
-
 \newenvironment{Answer}[1][]
-{   \label{פתרון: \theAnswerCounter}%
-    \setcounter{SubAnswerCounter}{0}
-    \noindent\bfseries פתרון \theAnswerCounter.\indent#1%
-    \normalfont\hfill \break%
-}{\refstepcounter{AnswerCounter}\hfill$\blacksquare$\break\hphantom{}}
+            {   \label{פתרון: \theAnswerCounter}%
+            \setcounter{SubAnswerCounter}{0}
+            \noindent\bfseries פתרון \theAnswerCounter.\indent#1%
+            \normalfont\hfill \break%
+            }{\refstepcounter{AnswerCounter}\hfill$\blacksquare$\break\hphantom{}}
 
 \newcounter{SubAnswerCounter}
 \setcounter{SubAnswerCounter}{0}
 \newenvironment{SubAnswer}[1][\theSubAnswerCounter]{
     \refstepcounter{SubAnswerCounter}
     \indent\bfseries\theAnswerCounter.\hphantom{}#1.\begin{adjustwidth}{2.5em}{2.5em}
-    \unskip\ignorespaces\ignorespacesafterend\normalfont
-}{\end{adjustwidth}\hfill$\Box$\break}
+        \unskip\ignorespaces\ignorespacesafterend\normalfont
+        }{\end{adjustwidth}\hfill$\Box$\break}
 
 \newcommand{\setQnA}
 {
@@ -97,7 +97,7 @@
     \setcounter{AnswerCounter}{\theQuestionCounter}
     \refstepcounter{QuestionCounter}
 }
-
+                        
 \newcommand{\frameparagraph}[3][black]{
     \begin{center}
         \noindent\fcolorbox{#1}{white}{\parbox{0.9\textwidth}%here comes what is processed before
@@ -114,17 +114,13 @@
 
 \newcommand{\warpfig}[2]{\vspace*{-\baselineskip}
     \begin{minipage}{\textwidth}
-    \begin{wrapfigure}{l}{0.4\textwidth}
-        \includegraphics[width=0.4\textwidth]{#1}
-    \end{wrapfigure}\hphantom{1pt}\newline
-    #2
-    \hphantom{100pt}\newline
+        \begin{wrapfigure}{l}{0.4\textwidth}
+            \includegraphics[width=0.4\textwidth]{#1}
+        \end{wrapfigure}\hphantom{1pt}\newline
+        #2
+        \hphantom{100pt}\newline
     \end{minipage}}
-
 \renewcommand*\showkeyslabelformat[1]{\fbox{\normalfont\small\ttfamily\texthebrew{#1}}}
-
-
-
 
 %Math environments
 \theoremstyle{plain}
@@ -150,27 +146,26 @@
         \begin{minipage}{#1}{\selectlanguage{hebrew}#2}\end{minipage}
         };
     \end{tikzpicture}
-}
+    }
 \newcommand{\statetheoremsolid}[2][\textwidth]{
-        \par\noindent\tikzstyle{mybox} = [draw=amber,fill=gray!17,thick,rectangle,rounded corners,inner sep=6pt]
-        \begin{tikzpicture}
-            \node [mybox] (box){%
-            \begin{minipage}{#1}{\selectlanguage{hebrew}#2}\end{minipage}
-            };
-        \end{tikzpicture}
-}
-        
+    \par\noindent\tikzstyle{mybox} = [draw=amber,fill=gray!17,thick,rectangle,rounded corners,inner sep=6pt]
+    \begin{tikzpicture}
+        \node [mybox] (box){%
+        \begin{minipage}{#1}{\selectlanguage{hebrew}#2}\end{minipage}
+        };
+    \end{tikzpicture}
+    }
 \newcommand{\newdef}[2]{
-            \hrule
-            \statedefsolid{
-                \begin{defn}
-                    \label{#1}
-                    \textcolor{cadmiumgreen}{\large{#1}}\newline
-                    #2
-                \end{defn}
-                }
-                \hrule
-}
+\hrule
+\statedefsolid{
+    \begin{defn}
+        \label{#1}
+        \textcolor{cadmiumgreen}{\large{#1}}\newline
+        #2
+    \end{defn}
+    }
+    \hrule
+    }
 %commands Math
 \newcommand{\texteq}[2][=]{\stackrel{#2}{#1}}
 \newcommand{\comp}[1]{{#1}^\complement}
@@ -216,8 +211,6 @@
 \newcommand{\dphi}{\,\d \phi}
 \newcommand{\dr}{\,\d r}
 \newcommand{\dpsi}{\,\d \psi}
-
-
 
 
 %TIKZ
