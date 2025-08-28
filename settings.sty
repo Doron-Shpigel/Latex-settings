@@ -11,9 +11,10 @@
 \usepackage{xcolor}
 \definecolor{amber}{rgb}{1.0, 0.49, 0.0}
 \definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
-\usepackage{showkeys}
+\usepackage[final]{showkeys}
 \usepackage{enumitem}
 \usepackage{tikz}
+\usepackage{circuitikz}
 \usepackage{wrapfig}
 \usepackage{hyperref}
 \usepackage{subcaption}
@@ -32,7 +33,7 @@
 \usepackage{commath}
 \usepackage{cancel}
 \usepackage{dirtytalk}
-\usepackage{mathspec}
+%\usepackage{mathspec}
 
 
 
@@ -45,6 +46,14 @@
 \setmonofont{Miriam Mono CLM}
 \setsansfont{Simple CLM}
 \usepackage{bidi}
+
+%general commands
+\newcommand\blfootnote[1]{
+    \begingroup
+    \renewcommand\thefootnote{}\footnote{#1}
+    \addtocounter{footnote}{-1}
+    \endgroup
+}
 
 %general environmetns
 \let\theversion=\relax
