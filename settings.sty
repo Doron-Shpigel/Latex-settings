@@ -6,7 +6,7 @@
 \usepackage{import}
 \usepackage{float}
 \usepackage{environ}
-\usepackage{changepage}
+\usepackage[strict]{changepage}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \definecolor{amber}{rgb}{1.0, 0.49, 0.0}
@@ -133,8 +133,8 @@
 
 %Math environments
 \theoremstyle{plain}
-\newtheorem{theorem}{משפט}[section]
-\newtheorem{lemma}{לֶמַה}
+\newtheorem{theoremHeb}{משפט}[section]
+\newtheorem{lemmaHeb}{לֶמַה}
 %\theoremstyle{definition}
 \newtheoremstyle{styledef}%
 {9pt}% Space above
@@ -146,7 +146,7 @@
 { }% Space after theorem head
 {}% Theorem head spec (can be left empty, meaning ‘normal’)
 \theoremstyle{styledef}
-\newtheorem{defn}[theorem]{הגדרה}
+\newtheorem{defn}[theoremHeb]{הגדרה}
 \newcommand{\statedefsolid}[2][\textwidth]{
     \par\noindent\tikzstyle{mybox} = [fill=yellow!20,thick,rectangle,inner sep=6pt,path picture={\fill [green!50!black] ([xshift=-6.15cm]path picture bounding box.north) rectangle (path picture bounding box.south west);}]
     \begin{tikzpicture}
